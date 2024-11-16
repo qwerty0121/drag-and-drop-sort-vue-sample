@@ -34,10 +34,12 @@ function onDragStartItem(event, index) {
 
 function onDragEndItem(event) {
   draggingItemIndex.value = null;
-  if (event.dataTransfer.dropEffect === "move") {
-    itemList.value = reorderingItemList.value;
-  }
   reorderingItemList.value = null;
+}
+
+function onDropContainer(event) {
+  // アイテムの並び替えを確定する
+  itemList.value = reorderingItemList.value;
 }
 
 function onDragEnterItem(event, index) {
@@ -66,7 +68,7 @@ function onDragEnterItem(event, index) {
 <template>
   <div>
     <p draggable="true">アイテムリスト</p>
-    <div class="data-list" @dragover.prevent @drop.prevent>
+    <div class="data-list" @dragover.prevent @drop.prevent="onDropContainer">
       <template v-for="(item, index) in itemListForRender" :key="item.id">
         <div
           class="data-item"

@@ -1,10 +1,12 @@
 <script setup>
 import DragAndDropSample from "@/components/DragAndDropSample.vue";
+import DropArea from "./components/DropArea.vue";
 </script>
 
 <template>
   <div class="page-root">
     <DragAndDropSample />
+    <DropArea />
   </div>
 </template>
 
@@ -14,5 +16,8 @@ import DragAndDropSample from "@/components/DragAndDropSample.vue";
 }
 .page-root {
   margin: 100px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
 }
 </style>
